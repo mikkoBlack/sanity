@@ -1,9 +1,23 @@
 import {defineCliConfig} from 'sanity/cli'
 
+const allowedHosts = [
+  'sanity-production.up.railway.app',
+  ...(process.env.SANITY_STUDIO_ALLOWED_HOSTS?.split(',').map((host) => host.trim()).filter(Boolean) ??
+    []),
+]
+
 export default defineCliConfig({
   api: {
     projectId: 'r36no2nx',
     dataset: 'production'
+  },
+  vite: {
+    server: {
+      allowedHosts,
+    },
+    preview: {
+      allowedHosts,
+    },
   },
   deployment: {
     /**
