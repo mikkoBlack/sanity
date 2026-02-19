@@ -4,25 +4,30 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {defineLocations, presentationTool} from 'sanity/presentation'
 
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'r36no2nx'
+const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
+const previewUrl = process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
+const allowOrigin = process.env.SANITY_STUDIO_ALLOW_ORIGIN || 'http://localhost:*'
+
 export default defineConfig({
   name: 'default',
   title: 'My Sanity Project',
 
-  projectId: 'r36no2nx',
-  dataset: 'production',
+  projectId,
+  dataset,
 
   plugins: [
-    structureTool(), 
+    structureTool(),
     visionTool(),
     presentationTool({
       previewUrl: {
-        initial: 'http://localhost:3000',
+        initial: previewUrl,
         previewMode: {
           enable: '/api/draft-mode/enable',
           disable: '/api/draft-mode/disable',
         },
       },
-      allowOrigins: ['http://localhost:*'],
+      allowOrigins: [allowOrigin],
       resolve: {
         mainDocuments: [
           {
