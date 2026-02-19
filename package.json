@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity dev",
-    "start": "sanity start",
+    "start": "sanity start --host 0.0.0.0 --port ${PORT:-3333}",
     "build": "sanity build",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
@@ -15,11 +15,11 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "^5.9.0",
+    "@sanity/vision": "^5.10.0",
     "react": "^19.1",
-    "react-is": "^19.2.4",
     "react-dom": "^19.1",
-    "sanity": "^5.9.0",
+    "react-is": "^19.2.4",
+    "sanity": "^5.10.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
